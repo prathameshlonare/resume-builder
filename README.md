@@ -197,12 +197,11 @@ resume-builder/
 
 ## 🤝 Contributing
 
-Contributions are welcome! If you want to:
-- Add keywords for other engineering domains (Data Engineering, Mobile, Frontend, ML).
-- Add new deterministic checks to `scripts/validate_bullets.py`.
-- Refine ATS parsing rules based on vendor updates.
+Contributions are welcome! Whether you want to add new engineering domains (Frontend, Data, ML), add fact-mining commands, or improve the deterministic linter:
 
-Please open a PR or submit an issue.
+* Please read our **[Contributing Guidelines (CONTRIBUTING.md)](CONTRIBUTING.md)** for quality standards, zero-dependency rules, and development workflows.
+* Check out existing keyword taxonomies in `shared/semantic-match-rules.md` to see the structure for new domains.
+* Open a PR or submit an issue to start a discussion.
 
 ---
 
