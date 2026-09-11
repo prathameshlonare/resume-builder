@@ -6,6 +6,7 @@
 *Combines modern ATS semantic search realities, recruiter F-pattern scan rules, and structural debiasing to eliminate AI tells.*
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![skills.sh](https://skills.sh/b/prathameshlonare/resume-builder)](https://skills.sh/prathameshlonare/resume-builder)
 [![Tests](https://github.com/prathameshlonare/resume-builder/actions/workflows/test.yml/badge.svg)](https://github.com/prathameshlonare/resume-builder/actions/workflows/test.yml)
 [![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-blue?logo=python&logoColor=white)](scripts/validate_bullets.py)
 [![Agent Skill](https://img.shields.io/badge/Agent%20Skill-Anthropic%20%7C%20Antigravity-purple)](SKILL.md)
@@ -14,6 +15,8 @@
 
 <br>
 
+**1 skill • 2 execution flows • 4 booming 2026 fresher tracks • 8 deterministic quality gates**
+
 > **Not an AI-detector bypass trick.**  
 > The goal is unassailable technical credibility: bullets grounded in real codebase metrics, verified git artifacts, and active engineering phrasing that survives both semantic ATS parsers and rigorous technical interview screens.
 
@@ -21,17 +24,29 @@
 
 ---
 
-## ⚡ Quick Install
+## ⚡ Core Flows & Commands
 
-Install directly into your agent environment (Claude Code, Antigravity, Cursor, Codex):
+| Flow / Command | Target Input | Primary Output |
+| :--- | :--- | :--- |
+| **`flows/audit.md`**<br>`/resume-audit` | Existing resume (`.md`, `.tex`, `.pdf`, plain text) + Target Role / JD | Severity-coded findings (🔴/🟠/🟢), 4-axis scores, gap analysis, and before/after bullet rewrites |
+| **`flows/generate.md`**<br>`/resume-generate` | Raw notes or answers to 5-step intake interview | Single-column ATS resume with grounded metrics and `[SUPPLY NUMBER]` placeholders |
+| **`scripts/validate_bullets.py`**<br>`validate_bullets` | Single bullet string or markdown file | Deterministic 8-gate pass/fail verification with exact gate diagnostics |
 
+---
+
+## 📦 Installation & Getting Started
+
+Choose your environment:
+
+<details open>
+<summary><strong>🤖 For AI Coding Agents (Claude Code, Antigravity, Cursor, Codex)</strong></summary>
+
+Install directly into your global agent environment:
 ```bash
-# Using skills CLI 
 npx skills add prathameshlonare/resume-builder
 ```
 
-**Or install manually via Git:**
-
+Or install manually via Git:
 ```bash
 # Global Agent Skills store
 git clone https://github.com/prathameshlonare/resume-builder.git ~/.agents/skills/resume-builder
@@ -39,6 +54,76 @@ git clone https://github.com/prathameshlonare/resume-builder.git ~/.agents/skill
 # Or directly in your workspace
 git clone https://github.com/prathameshlonare/resume-builder.git .agents/skills/resume-builder
 ```
+
+**Try without installing (Vercel Skills CLI):**
+```bash
+npx skills use prathameshlonare/resume-builder --agent claude-code
+```
+</details>
+
+<details>
+<summary><strong>🎓 For Students & Freshers (Free ChatGPT, Claude.ai, or Gemini Web)</strong></summary>
+
+*No coding tools or agent skills required — use directly in your browser!*
+
+#### Path A: You have a draft resume you want audited
+1. Open **ChatGPT**, **Claude.ai**, or **Gemini** in your browser.
+2. Copy and paste this prompt, then append your resume text:
+   ```text
+   Act as a senior technical recruiter and enterprise ATS auditor using the 4-axis framework from the resume-builder repository:
+   1. ATS Mechanical Parsing (single column, clean ASCII, no em-dashes, no tables/textboxes)
+   2. Semantic Match (cross-reference against 2026 roles: Cloud/DevOps, AI/GenAI, Data, or Backend)
+   3. Recruiter F-Pattern Scan (every bullet must have tool + action + quantified metric)
+   4. Zero AI Tells (no 'spearheaded', 'leveraged', 'orchestrated', 'robust', or participial openers like 'Utilizing...')
+
+   My Target Role: [e.g. Associate Cloud Engineer / Fresher SDE / Data Engineer]
+   Here is my draft resume:
+   [PASTE YOUR RESUME TEXT OR NOTES HERE]
+   ```
+3. The AI will output a clinical, severity-coded report (🔴 Critical, 🟠 Moderate, 🟢 Correct Call) and rewrite every weak bullet into an active, defensible engineering bullet.
+
+#### Path B: You have NO resume yet (Build from scratch by interview)
+1. Open ChatGPT or Claude.ai.
+2. Paste this prompt:
+   ```text
+   I am a college fresher with no resume yet. Interview me step-by-step using the intake protocol from resume-builder:
+   - Ask me one question at a time about my target role, projects, and tech stack.
+   - Dig into my actual codebase/projects to find real metrics (Docker sizes, lines of code, test counts, API latencies) instead of guessing.
+   - Do NOT draft anything until you have gathered all my facts.
+   ```
+3. Answer conversationally. The AI will draft a complete single-column ATS resume with grounded metrics.
+</details>
+
+<details>
+<summary><strong>🐍 Run Python Linter in ChatGPT Web (Zero Install)</strong></summary>
+
+If you have **ChatGPT Plus** or any AI with sandbox code execution:
+1. Download [`scripts/validate_bullets.py`](scripts/validate_bullets.py) from this repo.
+2. Drag and drop `validate_bullets.py` into ChatGPT.
+3. Prompt:
+   > *"Run this Python script on the bullet points below. Report which bullets pass or fail the 8 quality gates and show the scores."*
+4. ChatGPT executes the script in its Python sandbox and outputs the pass/fail scores!
+</details>
+
+<details>
+<summary><strong>💻 Run Local Python Linter (Terminal / VS Code)</strong></summary>
+
+Run the zero-dependency Python linter on your laptop:
+```bash
+# Clone the repository
+git clone https://github.com/prathameshlonare/resume-builder.git
+cd resume-builder
+
+# Test a single bullet point
+python scripts/validate_bullets.py --bullet "Built automated GitHub Actions CI pipeline running Bandit SAST and 34 unit tests."
+
+# Validate an entire markdown file
+python scripts/validate_bullets.py --file my_resume.md
+
+# Run the 9-point self-test suite
+python scripts/validate_bullets.py --test
+```
+</details>
 
 ---
 
