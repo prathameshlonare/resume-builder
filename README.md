@@ -6,6 +6,7 @@
 *Combines modern ATS semantic search realities, recruiter F-pattern scan rules, and structural debiasing to eliminate AI tells.*
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Tests](https://github.com/prathameshlonare/resume-builder/actions/workflows/test.yml/badge.svg)](https://github.com/prathameshlonare/resume-builder/actions/workflows/test.yml)
 [![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-blue?logo=python&logoColor=white)](scripts/validate_bullets.py)
 [![Agent Skill](https://img.shields.io/badge/Agent%20Skill-Anthropic%20%7C%20Antigravity-purple)](SKILL.md)
 [![Zero Dependencies](https://img.shields.io/badge/Dependencies-Standard%20Library%20Only-green)](scripts/validate_bullets.py)

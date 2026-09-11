@@ -22,6 +22,18 @@ import argparse
 import json
 from pathlib import Path
 
+# Ensure UTF-8 output across Windows, Unix, and CI environments
+if hasattr(sys.stdout, "reconfigure"):
+    try:
+        sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+    except Exception:
+        pass
+if hasattr(sys.stderr, "reconfigure"):
+    try:
+        sys.stderr.reconfigure(encoding="utf-8", errors="replace")
+    except Exception:
+        pass
+
 # Banned register-inflation buzzwords and classic AI tells
 BANNED_TELL_WORDS = [
     r"\bspearhead(?:ed|ing|s)?\b",
@@ -67,13 +79,17 @@ BANNED_TELL_WORDS = [
 COMPILED_BANNED = [(pattern, re.compile(pattern, re.IGNORECASE)) for pattern in BANNED_TELL_WORDS]
 
 METRIC_PATTERNS = [
-    r"\b\d+(?:\.\d+)?%\b",                          # Percentages: 93%, 99.9%
-    r"\b\d+(?:\.\d+)?\s*(?:ms|sec|min|hours?)\b",   # Latency/time: 120ms, 3 min
-    r"\b\d+(?:\.\d+)?\s*(?:MB|GB|TB|KB)\b",         # Storage/memory: 25MB, 350MB
-    r"\b\d+\+?\s*(?:microservices?|services?|endpoints?|lambdas?|tables?|tests?|repos?|pipelines?)\b", # Counts
-    r"\b(?:[<>]|less than|more than)?\s*\d+(?:\.\d+)?%?\b", # General numbers with context
-    r"\b\d+x\b",                                     # Multipliers: 2x, 10x
-    r"\b\d+\s*lines?\b",                            # Line counts: 650 lines
+    r"(?:₹|Rs\.?|INR|\$)\s*\d+(?:,\d{2,3})*(?:\.\d+)?\s*(?:k|lakhs?|crores?|cr|l|m|b|billion|million)?(?:\s*/\s*(?:mo|month|yr|year|annum))?\b", # Financial: ₹95,000, ₹25,000/month, ₹12 Lakhs, Rs. 50,000, INR 1.5 Cr
+    r"\b\d+(?:,\d{2,3})*(?:\.\d+)?\s*(?:lakhs?|crores?|cr|lpa)\b",                                   # Indian denominations: 12 Lakhs, 1.5 Crore, 10 LPA
+    r"\b\d+(?:,\d{3})*(?:\.\d+)?\s*(?:req/s|rps|qps|tps|ops/s|requests/sec)\b",                       # Throughput/rates: 1,500 req/s, 500 QPS
+    r"\b\d+(?:\.\d+)?%\s*(?:uptime|sla|availability)\b",                                               # Uptime & SLA: 99.95% uptime
+    r"\b\d+(?:\.\d+)?%\b",                                                                              # Percentages: 93%, 99.9%
+    r"\b\d+(?:\.\d+)?\s*(?:ms|sec|min|hours?)\b",                                                       # Latency/time: 120ms, 3 min
+    r"\b\d+(?:\.\d+)?\s*(?:MB|GB|TB|KB)\b",                                                             # Storage/memory: 25MB, 350MB
+    r"\b\d+\+?\s*(?:microservices?|services?|endpoints?|lambdas?|tables?|tests?|repos?|pipelines?)\b", # Counts: 34 unit tests
+    r"\b\d+x\b",                                                                                         # Multipliers: 2x, 10x
+    r"\b\d+\s*lines?\b",                                                                                # Line counts: 650 lines
+    r"\b(?:[<>]|less than|more than)\s*\d+(?:\.\d+)?%?\b",                                              # General numbers with comparison context
 ]
 
 COMPILED_METRICS = [re.compile(p, re.IGNORECASE) for p in METRIC_PATTERNS]
@@ -141,8 +157,8 @@ def check_mechanical_hygiene(text: str) -> tuple[bool, list[str]]:
 def check_word_count(text: str) -> tuple[bool, str]:
     """Gate 5: Word count bounds (15 to 38 words)."""
     word_count = len(text.split())
-    if word_count < 14:
-        return False, f"Too brief ({word_count} words). Good technical bullets typically require 15-35 words to detail tool, action, and metric."
+    if word_count < 15:
+        return False, f"Too brief ({word_count} words). Good technical bullets typically require 15-38 words to detail tool, action, and metric."
     if word_count > 38:
         return False, f"Too long ({word_count} words). Exceeds 38 words; hard to parse in a 6-second scan. Split into two points or cut fluff."
     return True, f"{word_count} words (optimal)"
@@ -247,6 +263,21 @@ def run_tests():
             "name": "Good Humanized Bullet: DynamoDB conditional writes, concurrency metric",
             "text": "Authored 650 lines of modular Terraform provisioning 5 DynamoDB tables and API Gateway, implementing composite primary keys to prevent double-voting under concurrent load.",
             "expect_pass": True,
+        },
+        {
+            "name": "Good Humanized Bullet: financial savings metric in Indian currency (₹)",
+            "text": "Reduced monthly AWS infrastructure spend from ₹95,000 to ₹28,000 by right-sizing EC2 instances and migrating non-critical batch jobs to Spot.",
+            "expect_pass": True,
+        },
+        {
+            "name": "Good Humanized Bullet: rate metric and high-availability SLA",
+            "text": "Scaled backend ingestion pipeline to handle 1,500 req/s while sustaining 99.95% uptime across 3 AWS availability zones.",
+            "expect_pass": True,
+        },
+        {
+            "name": "Bad Bullet: too brief boundary check (14 words, fails 15-word threshold)",
+            "text": "Configured automated GitHub Actions CI pipeline running 34 unit tests on every pull request.",
+            "expect_pass": False,
         }
     ]
     
