@@ -190,6 +190,13 @@ resume-builder/
 │   ├── phrasing-research.md             # Why prose thresholds don't transfer
 │   └── methodology.md                   # Severity coding & DevOps failure patterns
 │
+├── examples/                            # End-to-end walkthroughs & reference output
+│   ├── before-after-bullets.md          # 10 bullet transformations across all 8 gates
+│   └── devops-fresher/                  # Complete intake -> audit report -> final resume
+│       ├── input-raw-notes.md           # Raw unpolished candidate input
+│       ├── audit-report.md              # 4-axis severity-coded audit report
+│       └── final-resume.md              # Validated single-column ATS markdown resume
+│
 └── scripts/                             # Deterministic code tools
     └── validate_bullets.py              # Zero-dependency Python bullet linter
 ```

@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.0] - 2026-09-11
+
+### Added
+- Complete walkthrough library in `examples/`:
+  - `examples/before-after-bullets.md`: 10 real-world transformations covering all 8 quality gates.
+  - `examples/devops-fresher/`: End-to-end walkthrough from raw intake (`input-raw-notes.md`) to 4-axis audit (`audit-report.md`) and single-column ATS resume (`final-resume.md`).
+
+### Fixed
+- Fixed percentage regex matching in `scripts/validate_bullets.py` where word boundary `\b` following non-word character `%` prevented standalone percentages (e.g. `80%`) from matching when followed by whitespace.
+
 ## [1.0.0] - 2026-09-11
 
 ### Added

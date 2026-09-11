@@ -83,7 +83,7 @@ METRIC_PATTERNS = [
     r"\b\d+(?:,\d{2,3})*(?:\.\d+)?\s*(?:lakhs?|crores?|cr|lpa)\b",                                   # Indian denominations: 12 Lakhs, 1.5 Crore, 10 LPA
     r"\b\d+(?:,\d{3})*(?:\.\d+)?\s*(?:req/s|rps|qps|tps|ops/s|requests/sec)\b",                       # Throughput/rates: 1,500 req/s, 500 QPS
     r"\b\d+(?:\.\d+)?%\s*(?:uptime|sla|availability)\b",                                               # Uptime & SLA: 99.95% uptime
-    r"\b\d+(?:\.\d+)?%\b",                                                                              # Percentages: 93%, 99.9%
+    r"\b\d+(?:\.\d+)?%(?!\w)",                                                                         # Percentages: 93%, 99.9%, 80%
     r"\b\d+(?:\.\d+)?\s*(?:ms|sec|min|hours?)\b",                                                       # Latency/time: 120ms, 3 min
     r"\b\d+(?:\.\d+)?\s*(?:MB|GB|TB|KB)\b",                                                             # Storage/memory: 25MB, 350MB
     r"\b\d+\+?\s*(?:microservices?|services?|endpoints?|lambdas?|tables?|tests?|repos?|pipelines?)\b", # Counts: 34 unit tests
