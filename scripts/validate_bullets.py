@@ -81,12 +81,14 @@ COMPILED_BANNED = [(pattern, re.compile(pattern, re.IGNORECASE)) for pattern in 
 METRIC_PATTERNS = [
     r"(?:₹|Rs\.?|INR|\$)\s*\d+(?:,\d{2,3})*(?:\.\d+)?\s*(?:k|lakhs?|crores?|cr|l|m|b|billion|million)?(?:\s*/\s*(?:mo|month|yr|year|annum))?\b", # Financial: ₹95,000, ₹25,000/month, ₹12 Lakhs, Rs. 50,000, INR 1.5 Cr
     r"\b\d+(?:,\d{2,3})*(?:\.\d+)?\s*(?:lakhs?|crores?|cr|lpa)\b",                                   # Indian denominations: 12 Lakhs, 1.5 Crore, 10 LPA
-    r"\b\d+(?:,\d{3})*(?:\.\d+)?\s*(?:req/s|rps|qps|tps|ops/s|requests/sec)\b",                       # Throughput/rates: 1,500 req/s, 500 QPS
+    r"\b\d+(?:\.\d+)?\s*(?:req/s|rps|qps|tps|ops/s|requests/sec)\b",                       # Throughput/rates: 1,500 req/s, 500 QPS
+    r"\b\d+(?:\.\d+)?\s*[kKmMbB]?\s+(?:\w+\s+){0,2}(?:tokens?/s|tokens?|records?/s|records?|rows?/s|rows?|events?|queries)\b", # AI & Data volume: 1.5M raw event records, 4k tokens, 250k rows
     r"\b\d+(?:\.\d+)?%\s*(?:uptime|sla|availability)\b",                                               # Uptime & SLA: 99.95% uptime
     r"\b\d+(?:\.\d+)?%(?!\w)",                                                                         # Percentages: 93%, 99.9%, 80%
     r"\b\d+(?:\.\d+)?\s*(?:ms|sec|min|hours?)\b",                                                       # Latency/time: 120ms, 3 min
     r"\b\d+(?:\.\d+)?\s*(?:MB|GB|TB|KB)\b",                                                             # Storage/memory: 25MB, 350MB
-    r"\b\d+\+?\s*(?:microservices?|services?|endpoints?|lambdas?|tables?|tests?|repos?|pipelines?)\b", # Counts: 34 unit tests
+    r"\b\d+\+?\s+(?:\w+\s+){0,2}(?:microservices?|services?|endpoints?|lambdas?|tables?|tests?|repos?|pipelines?|models?|dags?|chunks?|files?)\b", # Counts: 34 unit tests, 18 modular dbt models
+    r"\b(?:faithfulness|precision|recall|relevan(?:ce|cy)|accuracy|f1[-\s]*score)\s*(?:from|to|of|:)?\s*0?\.\d+\b", # AI/RAG evaluation metrics: faithfulness from 0.68 to 0.91
     r"\b\d+x\b",                                                                                         # Multipliers: 2x, 10x
     r"\b\d+\s*lines?\b",                                                                                # Line counts: 650 lines
     r"\b(?:[<>]|less than|more than)\s*\d+(?:\.\d+)?%?\b",                                              # General numbers with comparison context
@@ -272,6 +274,16 @@ def run_tests():
         {
             "name": "Good Humanized Bullet: rate metric and high-availability SLA",
             "text": "Scaled backend ingestion pipeline to handle 1,500 req/s while sustaining 99.95% uptime across 3 AWS availability zones.",
+            "expect_pass": True,
+        },
+        {
+            "name": "Good Humanized Bullet: AI RAG pipeline, token chunking and faithfulness eval metric",
+            "text": "Built RAG pipeline chunking 1,200 documentation files into 512-token segments in Qdrant and improved answer faithfulness from 0.68 to 0.91 using Cohere re-ranking.",
+            "expect_pass": True,
+        },
+        {
+            "name": "Good Humanized Bullet: Data engineering dbt models, row volume, and automated tests",
+            "text": "Authored 18 modular dbt models transforming 1.5M raw event records into a dimensional star schema with 42 automated schema tests.",
             "expect_pass": True,
         },
         {

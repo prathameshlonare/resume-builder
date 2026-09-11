@@ -5,6 +5,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.0] - 2026-09-11
+
+### Added
+- **2026 Booming Fresher Domain Taxonomies** in `shared/semantic-match-rules.md`:
+  - AI & Generative AI Engineering (RAG architecture, vector databases, LangChain/LlamaIndex, evaluation frameworks, model serving).
+  - Data & Analytics Engineering (dbt models and tests, Apache Airflow, PySpark, star schema, SQL window functions, Great Expectations).
+  - Modern Backend & Distributed Systems (FastAPI, Go, PostgreSQL indexing, Redis caching, connection pooling, concurrency).
+- **Codebase Fact-Mining Protocols** in `shared/codebase-mining.md`:
+  - AI/GenAI: Chunk size/overlap, token cost reduction, Ragas evaluation metrics, streaming TTFT.
+  - Data Engineering: dbt model counts, Airflow DAG runtime reduction, analytical query profiling.
+  - Backend Systems: PostgreSQL `EXPLAIN ANALYZE` index cost, PgBouncer pooling, API throughput load testing.
+- **Extended Linter Regexes** in `scripts/validate_bullets.py`:
+  - Matches AI tokens (`tokens/s`, `4k tokens`), dataset volumes (`1.5M records`, `250k rows`), and evaluation metrics (`faithfulness from 0.68 to 0.91`).
+  - Added self-tests for AI RAG pipelines and Data Engineering dbt models (all 9 tests passing).
+
 ## [1.1.0] - 2026-09-11
 
 ### Added

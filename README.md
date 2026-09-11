@@ -144,14 +144,16 @@ python scripts/validate_bullets.py --test
 
 When technical candidates don't know what metrics to provide, the skill extracts exact facts directly from git commits, Dockerfiles, and cloud templates:
 
-* **Docker Optimization**: `docker images --format "{{.Repository}}:{{.Tag}} - {{.Size}}"`
-  * *Outcome*: *"Reduced Docker build artifact from 350MB (`node:22`) to 25MB (`nginx:alpine`), a 93% image size reduction."*
-* **Infrastructure as Code**: Count lines of modular Terraform / CloudFormation:
+* **AI & Generative AI**: Inspect chunk sizes, vector dimensions, and evaluation scripts:
+  * *Outcome*: *"Built RAG pipeline chunking 1,200 documentation files into 512-token segments in Qdrant and improved answer faithfulness from 0.68 to 0.91 using Cohere re-ranking."*
+* **Data Engineering**: Count dbt models, automated schema tests, and batch runtime:
+  * *Outcome*: *"Authored 18 modular dbt models transforming 1.5M raw event records into a dimensional star schema with 42 automated schema tests."*
+* **Infrastructure as Code & Cloud**: Count lines of modular Terraform / CloudFormation:
   * *Outcome*: *"Authored 650+ lines of modular Terraform provisioning 5 DynamoDB tables, Cognito, and API Gateway."*
-* **CI/CD & Security**: Count automated tests and linters:
+* **CI/CD & DevSecOps**: Count automated tests and linters:
   * *Outcome*: *"Configured GitHub Actions CI/CD pipeline running Bandit SAST and 34 unit tests on every pull request."*
-* **Concurrency & Database**:
-  * *Outcome*: *"Implemented DynamoDB conditional write expressions (`attribute_not_exists`) to guarantee idempotency and prevent double-voting."*
+* **Concurrency & High-Throughput Databases**:
+  * *Outcome*: *"Implemented DynamoDB conditional write expressions (`attribute_not_exists`) to guarantee idempotency and prevent double-voting across 500 concurrent users."*
 
 ---
 

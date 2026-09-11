@@ -36,19 +36,39 @@ When drafting bullets in `generate.md` or repairing weak bullets in `audit.md`, 
 
 ---
 
-## 4. Backend Microservices & Database Architecture
+## 4. AI & Generative AI Engineering (RAG, Agents & LLMOps)
 
 | Target Metric | Inspection Command / Source | Example Grounded Bullet Data |
 | :--- | :--- | :--- |
-| **Microservice Count** | Count handler files in `lambdas/` or `controllers/`: `(Get-ChildItem -Recurse *.py).Count` | Maintained **12 Python 3.9 Lambda microservices** handling authentication, vote ingestion, and tallying. |
-| **Concurrency & Race Conditions** | Inspect database write queries for conditional constraints | Used DynamoDB conditional write expressions (`attribute_not_exists`) to guarantee idempotency and prevent double-voting. |
-| **Access Control (RBAC)** | Check Cognito user groups or JWT claims verification | Enforced role-based access control (RBAC) across Student, Faculty, and Admin personas using Cognito user pool groups. |
-| **API Latency & Media Offloading** | Inspect file upload logic for presigned S3 URLs | Offloaded media uploads from backend compute via S3 presigned URLs, cutting API gateway payload overhead. |
+| **RAG Ingestion & Chunking** | Inspect text splitter config in `rag/` or `ingest.py` for `chunk_size` and `chunk_overlap` | Built RAG pipeline chunking 1,200 technical documentation files into 512-token segments with 64-token overlap, indexed in Qdrant. |
+| **Token Cost & Semantic Cache** | Check Redis / GPTCache integration and token tracking logs | Implemented Redis semantic cache for frequent query embeddings, cutting LLM token consumption by 42% and API spend by ₹25,000/month. |
+| **RAG Evaluation (Ragas / TruLens)** | Inspect evaluation script or CI eval runs (`ragas.evaluate`) | Evaluated retrieval pipeline using Ragas, boosting answer faithfulness from 0.68 to 0.91 and context precision by adding Cohere re-ranking. |
+| **Streaming & Time-to-First-Token** | Inspect async streaming generator in FastAPI / LiteLLM | Configured asynchronous SSE token streaming behind FastAPI, cutting user-perceived time-to-first-token (TTFT) from 2.4s to 380ms. |
 
 ---
 
-## 5. Verification Checklist Before Bullet Drafting
+## 5. Data & Analytics Engineering (dbt, Airflow & Warehousing)
 
-- [ ] Is there an exact tool or technology name mentioned (e.g. `Bandit`, `CloudFront OAI`, `DynamoDB conditional writes`)?
-- [ ] Is there a measurable baseline vs outcome (e.g. `350MB to 25MB`, `34 unit tests`, `650+ lines`)?
+| Target Metric | Inspection Command / Source | Example Grounded Bullet Data |
+| :--- | :--- | :--- |
+| **dbt Models & Schema Tests** | Linux: `find models/ -name "*.sql" \| wc -l`<br>PowerShell: `(Get-ChildItem -Recurse models\*.sql).Count`<br>Check `dbt test` output | Authored 18 modular dbt models transforming 1.5M raw event records into a dimensional star schema with 42 automated schema tests. |
+| **Pipeline Runtime & Batch Volume** | Inspect Airflow DAG execution logs or Prefect flow run history | Scheduled daily Apache Airflow DAG processing 250k customer records, reducing batch pipeline runtime from 45 min to 14 min via PySpark partitioning. |
+| **Analytical Query Optimization** | Run `EXPLAIN ANALYZE` or inspect BigQuery/Snowflake slot time | Optimized analytical SQL transformations using window functions and partition pruning, reducing warehouse query scan volume from 12GB to 450MB. |
+
+---
+
+## 6. Modern Backend & High-Throughput Systems
+
+| Target Metric | Inspection Command / Source | Example Grounded Bullet Data |
+| :--- | :--- | :--- |
+| **Database Indexing & Query Latency** | Inspect migration scripts for B-Tree / GIN indexes and run `EXPLAIN (ANALYZE, BUFFERS)` | Added composite B-Tree indexes on user lookup queries, reducing PostgreSQL P95 query execution time from 850ms to 45ms across 500k rows. |
+| **Connection Pooling & Concurrency** | Inspect `pgbouncer.ini` or database pool settings (`pool_size`, `max_overflow`) | Configured PgBouncer connection pooling with 20 persistent connections, preventing database connection exhaustion under 1,200 concurrent user requests. |
+| **API Throughput & Rate Benchmarks** | Run `wrk -t4 -c100 -d30s http://localhost:8000/api/v1/...` or check load test reports | Engineered asynchronous FastAPI endpoints sustaining 1,800 req/s with zero dropped connections during load testing. |
+
+---
+
+## 7. Verification Checklist Before Bullet Drafting
+
+- [ ] Is there an exact tool or technology name mentioned (e.g. `Qdrant`, `dbt test`, `Cohere Rerank`, `PgBouncer`, `Bandit`, `CloudFront OAI`)?
+- [ ] Is there a measurable baseline vs outcome (e.g. `350MB to 25MB`, `2.4s to 380ms`, `45 min to 14 min`, `₹95,000 to ₹28,000`)?
 - [ ] Could any other candidate copy-paste this bullet unchanged? If yes, dig deeper into the codebase for unique constraints or architectural choices.
