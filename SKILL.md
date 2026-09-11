@@ -1,6 +1,6 @@
 ---
 name: resume-builder
-version: 1.2.0
+version: 1.3.0
 description: Builds a resume from scratch by intake, or audits an existing resume/CV against four independent systems — traditional ATS keyword/parsing engines, AI-powered semantic search tools, human recruiter skimming, and AI-writing-pattern/credibility risk (generic-LLM phrasing that reads as templated to a human, independent of any detector) — against a target role or JD. Produces severity-coded findings, gap analysis, bullet rewrites, and an estimate-labeled match score for audits; a full drafted resume plus open placeholders for generation. Use when a user wants a resume/CV built or drafted from their information (no existing document), or uploads/describes an existing resume and asks for feedback, an ATS check, a "will this pass" review, a JD match, wants to know why they aren't getting callbacks, wants a recruiter's honest opinion, wants to compare resumes, or asks to make a resume sound "less AI" / "more human" / avoid sounding generated. Also trigger when a user uploads output from a third-party resume-scoring tool (6figr/JobGPT, resumeheatmap.com, Jobscan, Rezi, Zety, Teal), including locked results, and wants it interpreted — audit the resume independently, don't trust the tool's own scores.
 ---
 
@@ -22,9 +22,10 @@ One skill, two flows sharing a common standards layer. Route first, then hand of
 
 - `shared/bullet-standards.md` — the Scope+Outcome+Ownership+Verifiability bar, never-invent rules, ownership language, skill-to-evidence linkage, certification vs. training.
 - `shared/ats-parsing-rules.md` — mechanical ATS parsing checks and 2026 context on ML-layer scoring.
-- `shared/semantic-match-rules.md` — AI-semantic search / embedding match checks and the DevOps keyword reference.
+- `shared/semantic-match-rules.md` — AI-semantic search / embedding match checks and 4-domain keyword reference (DevOps, AI/GenAI, Data, Backend).
 - `shared/resume-phrasing-rules.md` — the AI-pattern/credibility-risk signal set (tell vocabulary, verb-shape uniformity, metric symmetry, specificity test), and the correct framing: this targets human pattern-recognition, not detector-evasion.
-- `shared/codebase-mining.md` — developer & DevOps fact-mining protocol to extract verifiable metrics directly from git, Docker, Terraform, CI/CD, and databases.
+- `shared/codebase-mining.md` — developer fact-mining protocol to extract verifiable metrics directly from git, Docker, Terraform, CI/CD, databases, RAG, and dbt.
+- `shared/audit-schema.json` — formal JSON Schema validating machine-readable 4-axis audit reports.
 - `scripts/validate_bullets.py` — deterministic Python linter enforcing the 8 hard quality gates on bullet points.
 
 Do not duplicate or redefine any of these inline inside a flow file — if a flow needs a new check, add it to the relevant shared file so both flows benefit and stay in sync.

@@ -1,0 +1,211 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ResumeAuditReport",
+  "description": "Formal schema for machine-readable resume audit reports across the 4 evaluation axes.",
+  "type": "object",
+  "required": [
+    "candidate",
+    "target_role",
+    "overall_score",
+    "axes",
+    "findings",
+    "bullet_rewrites"
+  ],
+  "properties": {
+    "candidate": {
+      "type": "string",
+      "description": "Candidate name or placeholder (e.g. [CANDIDATE_NAME])"
+    },
+    "target_role": {
+      "type": "string",
+      "description": "Target job title or specialization"
+    },
+    "benchmark": {
+      "type": "object",
+      "required": ["type"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["verbatim_jd", "industry_typical_posting"]
+        },
+        "target_seniority": {
+          "type": "string",
+          "enum": ["fresher", "junior", "mid", "senior"]
+        },
+        "geography": {
+          "type": "string"
+        }
+      }
+    },
+    "overall_score": {
+      "type": "object",
+      "required": ["score", "type", "guidance_band"],
+      "properties": {
+        "score": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "type": {
+          "type": "string",
+          "const": "estimate"
+        },
+        "guidance_band": {
+          "type": "string",
+          "enum": [
+            "strong_match_80_100",
+            "workable_60_79",
+            "significant_gaps_40_59",
+            "fundamental_mismatch_below_40"
+          ]
+        }
+      }
+    },
+    "axes": {
+      "type": "object",
+      "required": [
+        "ats_parsing",
+        "semantic_search",
+        "recruiter_scan",
+        "ai_pattern_credibility"
+      ],
+      "properties": {
+        "ats_parsing": {
+          "type": "object",
+          "required": ["score", "status"],
+          "properties": {
+            "score": { "type": "number", "minimum": 0, "maximum": 100 },
+            "status": { "type": "string", "enum": ["pass", "risk", "fail"] },
+            "mechanical_checks": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["check_name", "status"],
+                "properties": {
+                  "check_name": { "type": "string" },
+                  "status": { "type": "string", "enum": ["pass", "fail"] },
+                  "detail": { "type": "string" }
+                }
+              }
+            }
+          }
+        },
+        "semantic_search": {
+          "type": "object",
+          "required": ["score", "role_alignment"],
+          "properties": {
+            "score": { "type": "number", "minimum": 0, "maximum": 100 },
+            "role_alignment": { "type": "string" },
+            "matched_primary_keywords": {
+              "type": "array",
+              "items": { "type": "string" }
+            },
+            "missing_primary_keywords": {
+              "type": "array",
+              "items": { "type": "string" }
+            }
+          }
+        },
+        "recruiter_scan": {
+          "type": "object",
+          "required": ["score", "outcome_bullet_ratio_pct"],
+          "properties": {
+            "score": { "type": "number", "minimum": 0, "maximum": 100 },
+            "outcome_bullet_ratio_pct": { "type": "number", "minimum": 0, "maximum": 100 },
+            "defensibility_summary": { "type": "string" }
+          }
+        },
+        "ai_pattern_credibility": {
+          "type": "object",
+          "required": ["score", "tell_words_detected"],
+          "properties": {
+            "score": { "type": "number", "minimum": 0, "maximum": 100 },
+            "tell_words_detected": {
+              "type": "array",
+              "items": { "type": "string" }
+            },
+            "verb_uniformity_warning": { "type": "boolean" },
+            "metric_symmetry_flag": { "type": "boolean" }
+          }
+        }
+      }
+    },
+    "findings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["severity", "axis", "title", "recommended_fix"],
+        "properties": {
+          "severity": {
+            "type": "string",
+            "enum": ["critical", "moderate", "minor", "correct_call"]
+          },
+          "axis": {
+            "type": "string",
+            "enum": [
+              "ats_parsing",
+              "semantic_search",
+              "recruiter_scan",
+              "ai_pattern_credibility"
+            ]
+          },
+          "title": { "type": "string" },
+          "evidence": { "type": "string" },
+          "risk": { "type": "string" },
+          "recommended_fix": { "type": "string" }
+        }
+      }
+    },
+    "gap_analysis": {
+      "type": "object",
+      "properties": {
+        "hard_missing_skills": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "buried_skills": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "bullet_rewrites": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["before", "after", "why"],
+        "properties": {
+          "project_or_role": { "type": "string" },
+          "before": { "type": "string" },
+          "after": { "type": "string" },
+          "why": { "type": "string" },
+          "gates_fixed": {
+            "type": "array",
+            "items": { "type": "string" }
+          }
+        }
+      }
+    },
+    "priority_fixes": {
+      "type": "object",
+      "properties": {
+        "free_today": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "weekend_project": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "medium_term": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "preserved_strengths": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  }
+}

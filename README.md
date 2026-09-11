@@ -183,9 +183,10 @@ resume-builder/
 ├── shared/                              # Shared standards layer
 │   ├── bullet-standards.md              # Scope + Outcome + Ownership rules
 │   ├── ats-parsing-rules.md             # Mechanical parsing & formatting rules
-│   ├── semantic-match-rules.md          # Vector embedding & DevOps keyword reference
+│   ├── semantic-match-rules.md          # Vector embedding & 4-domain keyword reference
 │   ├── resume-phrasing-rules.md         # AI-pattern signal set & tell vocabulary
-│   └── codebase-mining.md               # Terminal commands for metric fact-mining
+│   ├── codebase-mining.md               # Fact-mining protocols across all 4 domains
+│   └── audit-schema.json                # Formal JSON Schema for audit reports
 │
 ├── references/                          # Deep research & evidence base
 │   ├── ats-detection-research.md        # Sept 2026 10-platform ATS research

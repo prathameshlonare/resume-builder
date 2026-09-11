@@ -157,6 +157,8 @@ In this order:
 
 **HTML report artifact** (when the user asks for a visual report): single HTML file, editorial audit-document style — hero section with headline severity summary (not the score) up top; match score as four labeled meter bars, captioned "estimate"; two-column gap analysis; before/after per rewritten bullet with one-line "why" callout, "keep as-is" styled distinctly; numbered priority fix section; distinctive professional color palette and typography, not generic defaults.
 
+**Machine-readable JSON artifact** (when integrating into automated pipelines, agent tooling, or comparative dashboards): Single JSON object strictly conforming to [`../shared/audit-schema.json`](../shared/audit-schema.json). Encodes structured axis sub-scores, severity-coded findings, gap analysis, and bullet rewrites.
+
 ## Step 11 — Multiple resumes / comparing candidates
 
 Run Steps 1-10 independently per resume, then a short relative-ranking paragraph — who's strongest for this role and why, not a re-statement of each report.

@@ -5,6 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.3.0] - 2026-09-11
+
+### Added
+- **Structured Audit Schema (`shared/audit-schema.json`)**:
+  - Formal JSON Schema conforming to JSON Schema Draft 2020-12 defining structured, machine-readable audit report artifacts.
+  - Enforces schemas for candidate metadata, benchmark type, estimate overall score with guidance bands, 4-axis sub-scores, severity-coded findings (`critical`, `moderate`, `minor`, `correct_call`), gap analysis, and before/after bullet rewrites with gates fixed.
+- **Machine-Readable JSON Output in Audit Flow (`flows/audit.md`)**:
+  - Added JSON artifact output specification under Step 10 for programmatic agent workflows, automated CI gates, and dashboard integrations.
+- **Documentation & Standards Sync**:
+  - Added `shared/audit-schema.json` to the file tree in `README.md` and shared standards list in `SKILL.md`.
+
 ## [1.2.0] - 2026-09-11
 
 ### Added
