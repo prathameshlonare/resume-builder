@@ -69,7 +69,7 @@ python scripts/validate_bullets.py --test
 
 You can also test against a custom bullet file:
 ```bash
-python scripts/validate_bullets.py --bullet "Built automated GitHub Actions pipeline running Bandit SAST and 34 unit tests."
+python scripts/validate_bullets.py --file my_bullets.txt
 ```
 
 ### 4. Commit using Conventional Commits

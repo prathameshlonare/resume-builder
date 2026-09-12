@@ -114,8 +114,8 @@ Run the zero-dependency Python linter on your laptop:
 git clone https://github.com/prathameshlonare/resume-builder.git
 cd resume-builder
 
-# Test a single bullet point
-python scripts/validate_bullets.py --bullet "Built automated GitHub Actions CI pipeline running Bandit SAST and 34 unit tests."
+# Write the bullet to a file (e.g. `bullet.txt`) and run:
+python scripts/validate_bullets.py --file bullet.txt
 
 # Validate an entire markdown file
 python scripts/validate_bullets.py --file my_resume.md
@@ -210,8 +210,8 @@ The repository includes a standalone, zero-dependency Python linter enforcing 8 
 ### Usage
 
 ```bash
-# Validate a single bullet
-python scripts/validate_bullets.py --bullet "Built automated GitHub Actions pipeline running Bandit SAST and 34 unit tests."
+# Write the bullet to a file and run
+python scripts/validate_bullets.py --file temp_bullet.txt
 
 # Validate a full text/markdown file of bullets
 python scripts/validate_bullets.py --file path/to/bullets.md

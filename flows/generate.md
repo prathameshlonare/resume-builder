@@ -46,9 +46,9 @@ Only include an entry if it appears in at least one drafted project bullet, or t
 
 ## Step 5 — Self-check before presenting
 
-Run the deterministic linter `scripts/validate_bullets.py` on the drafted bullets:
+Write the drafted bullets to a temporary file (e.g. `temp_bullets.txt`) and run:
 ```bash
-python scripts/validate_bullets.py --bullet "bullet text here"
+python scripts/validate_bullets.py --file temp_bullets.txt
 ```
 Or pipe/pass drafted bullets to verify all 8 quality gates (zero tell words, no participial openers, no trailing fluff, active voice, word count 15-38, metric present).
 
