@@ -5,6 +5,11 @@ validate_bullets.py - Deterministic Resume Bullet Linter & Quality Gate
 Validates resume bullet points against ATS, recruiter F-pattern, and
 AI-tell phrasing rules. Uses only standard library modules.
 
+Security: stdlib-only (argparse, re, json, sys, pathlib). No network,
+no subprocess, no shell, no eval/exec, no file writes. Read-only —
+reads bullets via --file or stdin only. Never pass untrusted resume
+text as a shell argument; always write to a file first and use --file.
+
 Checks:
   [1] No Participial Opener (no starting with '-ing' word)
   [2] No Trailing Participial Fluff (no trailing ', ...ing...')

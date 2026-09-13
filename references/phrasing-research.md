@@ -67,16 +67,6 @@ Unlike Not-Ai's numeric density thresholds, these are pattern checks appropriate
 
 **Audit flow (absorbing old resume-ats-audit):** add this as a fourth axis alongside the existing three (ATS parsing / semantic match / human skimmability) — call it **"AI-pattern / credibility risk"** — reported the same way as the others: severity-coded, with before/after rewrites, never blended into the other three scores.
 
-## Sources
-- careerflow.ai/blog/chatgpt-resume-prompts (Jul 2026)
-- joblabs.ai/resume/chatgpt-prompts-for-resume (May 2026)
-- getpruf.ai/blog/chatgpt-resume-detection (Apr 2026) — recruiter-facing detection-pattern guide
-- resumeoptimizerpro.com/blog/chatgpt-prompts-for-resume (May 2026)
-- retunerai.com/blog/ai-resume-chatgpt-guide-2026 (May 2026)
-- cv-review.com/hub/chatgpt-resume
-- atlasresume.com/blog/chatgpt-resume-prompts-2026 (May 2026)
-- smartresumeanalyzer.com/blog/how-to-use-chatgpt-claude-to-tailor-resume (Jul 2026)
-- resumechangers.com/blog/ai-resume-writing-chatgpt-vs-claude.html (Jul 2026)
-- resumevera.com/blogs/chatgpt-ai-resume-writing-human-review-2026
-- blog.theinterviewguys.com (survey stat — single source, self-reported, treat as directional only)
-- resumeology.hollypryce.com (bad-vs-good bullet examples)
+## Research credibility note
+
+Sources section removed to reduce external-link supply-chain surface. Patterns above synthesize a Sept 2026 multi-source review (recruiter blogs, hiring-manager surveys, detector-accuracy studies) — convergent signals only, single-source stats flagged inline. See README Ground Truth summary. No external downloads required.

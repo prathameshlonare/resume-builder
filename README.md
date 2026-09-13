@@ -139,6 +139,7 @@ When job seekers ask generic LLMs (ChatGPT, Claude, Gemini) to write or polish t
 - **ATS Does NOT Detect Watermarks**: Independent audits across 10 major enterprise ATS platforms (Workday, Greenhouse, Taleo, iCIMS, Lever, Ashby) confirm that platforms do **not** run AI text detectors or watermark sniffers. Doing so would trigger legal and compliance liability under EEOC guidelines and the EU AI Act due to massive false-positive rates on non-native English speakers.
 - **The Real Threat is Human Recruiter Recognition**: Recruiters perform a **6 to 7.4-second F-pattern scan** (The Ladders eye-tracking study). When a recruiter spots generic AI templates and ungrounded buzzwords, the resume gets binned immediately.
 - **Modern ATS Uses Semantic Embeddings**: Platforms like Eightfold.ai and Ashby use deep learning ontologies and citation-based reviews. They search for **evidence sentences** inside project bullets to validate claimed skills.
+- **Credibility note:** detailed source URLs were removed from `references/` to keep the skill zero-external-download. The three claims above consolidate a Sept 2026 multi-source review (multi-platform ATS audits, watermarking disclosures, detector-accuracy and eye-tracking studies). Single-source / self-reported stats are flagged as directional only in `references/ats-detection-research.md` and `references/phrasing-research.md`.
 
 ---
 

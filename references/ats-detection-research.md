@@ -75,18 +75,6 @@ Don't build the skill around:
 - Detecting/dodging "the ATS flags AI text" — no solid evidence major ATS do this today.
 - Defeating SynthID/watermarks specifically — no evidence ATS uses this, and watermark survival is a separate, narrower problem than "does this read as generic."
 
-## Sources
-- jobscan.co/blog/can-ats-detect-ai-resume (Jul 2026)
-- enhancv.com/blog/ats-detect-ai-resume (May 2026)
-- stylingcv.com/blog/can-ats-detect-ai-written-resumes-2026-research-10-systems (Aug 2026)
-- willo.video/blog/how-to-detect-ai-generated-resumes
-- theaicareerlab.com/blog/ai-augmented-resume-guide-2026 (Apr 2026) — single-source, uncorroborated AI-classifier claim
-- resumeoptimizerpro.com/blog/will-my-resume-be-flagged-as-ai (Jun 2026)
-- medium.com/write-a-catalyst (SynthID/Claude watermark removal, Aug 2026)
-- apidog.com/blog/claude-vs-chatgpt-vs-gemini-watermarking
-- proofreaderpro.ai/blog/ai-watermarking-explained-openai-google-claude
-- synthid-detector.com
-- wp-nitin.com/blog/ai-watermarking-google-openai-anthropic
-- landauai.com/ai-text-watermarking (EU AI Act Article 50 context)
-- simplify.jobs/blog/6-second-resume-rule
-- secondtalent.com/resources/job-interview-statistics
+## Research credibility note
+
+Sources section removed to reduce external-link supply-chain surface. Findings above synthesize a Sept 2026 multi-source review (multi-platform ATS audits, watermarking disclosures, detector-accuracy studies) — treat as directional, not vendor documentation. See README Ground Truth summary. No external downloads required.
