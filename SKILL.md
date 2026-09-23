@@ -1,9 +1,22 @@
 ---
 name: resume-builder
-version: 1.3.1
-description: Builds a resume from scratch by intake, or audits an existing resume/CV against four independent systems — traditional ATS keyword/parsing engines, AI-powered semantic search tools, human recruiter skimming, and AI-writing-pattern/credibility risk (generic-LLM phrasing that reads as templated to a human, independent of any detector) — against a target role or JD. Produces severity-coded findings, gap analysis, bullet rewrites, and an estimate-labeled match score for audits; a full drafted resume plus open placeholders for generation. Use when a user wants a resume/CV built or drafted from their information (no existing document), or uploads/describes an existing resume and asks for feedback, an ATS check, a "will this pass" review, a JD match, wants to know why they aren't getting callbacks, wants a recruiter's honest opinion, wants to compare resumes, or asks to make a resume sound "less AI" / "more human" / avoid sounding generated. Also trigger when a user uploads output from a third-party resume-scoring tool (6figr/JobGPT, resumeheatmap.com, Jobscan, Rezi, Zety, Teal), including locked results, and wants it interpreted — audit the resume independently, don't trust the tool's own scores.
-tags: [resume, cv, ats, career, job-search, audit, generator]
-keywords: [resume builder, cv builder, ats checker, resume audit, career advice]
+description: Builds a resume from scratch by intake, or audits an existing resume/CV against four systems — ATS keyword/parsing engines, semantic search, recruiter skimming, and AI-writing credibility risk against a target role or JD. Produces severity-coded findings, gap analysis, bullet rewrites, and estimate match scores for audits; or a full drafted resume for generation. Use when a user wants a resume/CV built from scratch, or uploads/shares an existing resume for feedback, ATS checks, 'will this pass' reviews, JD matching, recruiter critique, resume comparisons, or to sound 'less AI' / 'more human'. Also trigger when interpreting results from third-party resume tools (Jobscan, Rezi, Zety, Teal, JobGPT, resumeheatmap) — audits independently without trusting external scores.
+metadata:
+  version: 1.3.1
+  tags:
+    - resume
+    - cv
+    - ats
+    - career
+    - job-search
+    - audit
+    - generator
+  keywords:
+    - resume builder
+    - cv builder
+    - ats checker
+    - resume audit
+    - career advice
 ---
 
 # Resume Builder

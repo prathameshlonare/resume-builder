@@ -8,7 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.3.1] - 2026-09-23
 
 ### Security
-- Removed external references to flagged domain `resumeoptimizerpro.com`.
+- Removed external references to previously flagged third-party domain.
 - Hardened bullet validator execution guidelines (`validate_bullets.py`) with strict stdlib-only restrictions.
 - Added input sanitization boundaries in `flows/audit.md` and `flows/generate.md` against indirect prompt injection.
 
